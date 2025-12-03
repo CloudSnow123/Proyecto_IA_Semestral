@@ -11,8 +11,7 @@ from sklearn.metrics import classification_report, accuracy_score
 # ==========================================
 # CONFIGURACIÓN
 # ==========================================
-DATASET_PATH = "dataset"  # Nombre de tu carpeta principal
-# Asegúrate que estas etiquetas coincidan con los nombres de tus carpetas
+DATASET_PATH = "Dataset"  # Nombre de carpeta principal
 EMOCIONES = {
     "Alegria":0,
     "Disgusto":1,
@@ -27,10 +26,9 @@ EMOCIONES = {
 # ==========================================
 def extract_mfcc(file_path):
     try:
-        # Carga el audio. sr=22050 Hz es el estándar para voz
+        # Carga el audio
         audio, sample_rate = librosa.load(file_path, res_type='kaiser_fast')
         
-        # Extraemos 40 MFCCs (huella digital del sonido)
         # Esto convierte el audio en una matriz de números
         mfccs = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
         
@@ -52,6 +50,8 @@ for emocion, etiqueta in EMOCIONES.items():
     # Busca archivos .wav en cada subcarpeta
     search_path = os.path.join(DATASET_PATH, emocion, "*.wav")
     archivos = glob.glob(search_path)
+
+    print(f"🔍 Intentando buscar en la ruta: {search_path}")
     
     print(f"   -> Procesando '{emocion}': {len(archivos)} archivos encontrados.")
     
