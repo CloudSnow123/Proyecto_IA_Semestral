@@ -9,11 +9,14 @@ st.set_page_config(page_title="Detector de Emociones IA", page_icon="🎙️", l
 
 # Diccionario para traducir números a texto
 EMOCIONES_TEXTO = {
-    0: "Enojo 😠",
-    1: "Alegría 😄",
-    2: "Tristeza 😢",
-    3: "Neutro 😐"
+    0: "Alegría 😄",
+    1: "Disgusto 🤢", 
+    2: "Enojo 😠",
+    3: "Miedo 😨",
+    4: "Neutro 😐",
+    5: "Tristeza 😢",
 }
+
 
 # Cargar el modelo entrenado
 @st.cache_resource
